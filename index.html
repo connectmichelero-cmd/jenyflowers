@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="es" id="html-root">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JENY FLOWERS | Rosas Eternas y Lujo</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Cinzel:wght@500;700&family=Baskerville:ital,wght@0,400;0,700;1,400&family=Didot&family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,700;1,6..96,400&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://js.stripe.com/v3/"></script>
+</head>
+<body>
+
+    <!-- Pantalla de Carga (Preloader con Logo Brillante y Ampliado) -->
+    <div id="preloader">
+        <div class="preloader-content">
+            <img src="assets/images/editorial/logopagina.png" alt="Jeny Flowers Logo" class="shining-logo">
+        </div>
+    </div>
+
+    <!-- Barra de navegación fija superior -->
+    <div id="sticky-header" class="header-floating-wrapper">
+        <div class="top-utility-bar">
+            <div class="utility-left">
+                <a href="pages/contacto.html" data-es="Contáctenos" data-en="Contact Us">Contáctenos</a>
+                <a href="pages/boutiques.html" data-es="Boutiques" data-en="Boutiques">Boutiques</a>
+            </div>
+            <div class="utility-right">
+                <div class="language-selector" style="cursor: pointer; font-weight: bold; letter-spacing: 1px;">
+                    <span onclick="cambiarIdioma('es')" id="lang-es" style="color: #dfc18b;">ES</span> / 
+                    <span onclick="cambiarIdioma('en')" id="lang-en" style="color: #ffffff;">EN</span>
+                </div>
+                <a href="pages/deseos.html" data-es="Lista de deseos" data-en="Wishlist">Lista de deseos</a>
+                <a href="#buscar" onclick="abrirBuscador()" data-es="Buscar" data-en="Search">Buscar</a>
+                <a href="pages/cuenta.html" data-es="Cuenta" data-en="Account">Cuenta</a>
+                <a href="pages/carro.html" id="cart-btn" onclick="abrirCarro()"><span data-es="Carro" data-en="Cart">Carro</span> (<span id="cart-count">0</span>)</a>
+            </div>
+        </div>
+
+        <header class="site-header">
+            <div class="header-inner">
+                <nav class="nav-group left-nav">
+                    <a href="pages/flores.html" data-es="Flores" data-en="Flowers">Flores</a>
+                    <a href="pages/regalos.html" data-es="Regalos" data-en="Gifts">Regalos</a>
+                </nav>
+                
+                <div class="logo-container">
+                    <a href="index.html" class="brand-logo">JENY FLOWERS</a>
+                    <div class="brand-divider">
+                        <span class="line"></span>
+                        <span class="diamond">◆</span>
+                        <span class="line"></span>
+                    </div>
+                    <span class="brand-subtitle">YOUR DREAM COME TRUE</span>
+                </div>
+
+                <nav class="nav-group right-nav">
+                    <a href="pages/coleccion.html" data-es="Colección navideña" data-en="Holiday Collection">Colección navideña</a>
+                    <a href="pages/explorar.html" data-es="Explorar" data-en="Explore">Explorar</a>
+                </nav>
+            </div>
+        </header>
+    </div>
+
+    <!-- Sección Hero con Video de Fondo -->
+    <section class="hero-section">
+        <video autoplay muted loop playsinline id="banner-video" class="hero-video">
+            <source src="assets/images/editorial/banner.MP4" type="video/mp4">
+            Tu navegador no soporta videos HTML5.
+        </video>
+        <div class="hero-overlay"></div>
+
+        <div class="hero-content">
+            <span class="hero-subtitle" data-es="Rosas reales que duran un año™" data-en="Real flowers that last a year™">Rosas reales que duran un año™</span>
+            <h1 data-es="Todo lo que brilla" data-en="All That Glitters">Todo lo que brilla</h1>
+            <p data-es="Inspirado en el deslumbrante horizonte de la ciudad y el diseño de alta gama. Descubre nuestra decoración floral de lujo." data-en="Inspired by the glittering skyline of New York and high-end design. Discover our luxury floral decor.">Inspirado en el deslumbrante horizonte de la ciudad y el diseño de alta gama. Descubre nuestra decoración floral de lujo.</p>
+            <button class="cta-button" onclick="document.getElementById('editorial-inicio').scrollIntoView({behavior: 'smooth'})" data-es="Vacaciones de Tienda" data-en="Shop Holiday">Vacaciones de Tienda</button>
+        </div>
+    </section>
+
+    <!-- Barra de Prensa -->
+    <section class="press-marquee-section">
+        <p class="press-title" data-es="En la prensa" data-en="In The Press">En la prensa</p>
+        <div class="marquee-container">
+            <div class="marquee-track">
+                <div class="marquee-item wsj">THE WALL STREET JOURNAL</div>
+                <div class="marquee-item glamour">GLAMOUR</div>
+                <div class="marquee-item nyt">The New York Times</div>
+                <div class="marquee-item forbes">Forbes</div>
+                <div class="marquee-item bazaar">BAHAR</div>
+                <div class="marquee-item vogue">VOGUE</div>
+                <div class="marquee-item allure">allure</div>
+                <div class="marquee-item marieclaire">marie claire</div>
+                <div class="marquee-item cosmo">COSMOPOLITAN</div>
+                
+                <div class="marquee-item wsj">THE WALL STREET JOURNAL</div>
+                <div class="marquee-item glamour">GLAMOUR</div>
+                <div class="marquee-item nyt">The New York Times</div>
+                <div class="marquee-item forbes">Forbes</div>
+                <div class="marquee-item bazaar">BAHAR</div>
+                <div class="marquee-item vogue">VOGUE</div>
+                <div class="marquee-item allure">allure</div>
+                <div class="marquee-item marieclaire">marie claire</div>
+                <div class="marquee-item cosmo">COSMOPOLITAN</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECCIÓN NEW ARRIVALS -->
+    <section class="new-arrivals-section">
+        <div class="arrivals-header-container">
+            <div class="arrivals-title-group">
+                <h2 class="arrivals-title" data-es="Nuevos Lanzamientos" data-en="New Arrivals">Nuevos Lanzamientos</h2>
+                <p class="arrivals-subtitle" data-es="Diseños de edición limitada y florales preservados creados para durar." data-en="Limited-edition designs and preserved florals, crafted to outlast the season.">Diseños de edición limitada y florales preservados creados para durar.</p>
+                <button class="arrivals-btn" data-es="Ver Todos los Nuevos" data-en="Shop All New Arrivals">Ver Todos los Nuevos</button>
+            </div>
+            <div class="arrivals-arrows">
+                <button class="arrow-btn" onclick="desplazarSlider('izquierda')">&#8592;</button>
+                <button class="arrow-btn" onclick="desplazarSlider('derecha')">&#8594;</button>
+            </div>
+        </div>
+
+        <div class="arrivals-slider-wrapper" id="arrivals-slider">
+            <div class="arrival-card">
+                <div class="arrival-badge" data-es="Nuevo" data-en="New Arrival">Nuevo</div>
+                <div class="arrival-img">
+                    <img src="assets/images/nuevo/adorno1.JPG" alt="Floral 1">
+                </div>
+                <div class="arrival-info">
+                    <div class="arrival-name">Thalia Porcelain Vase</div>
+                    <div class="arrival-price">$350</div>
+                </div>
+            </div>
+            <div class="arrival-card">
+                <div class="arrival-badge green" data-es="Reserva Anticipada" data-en="Pre-Order Now">Reserva Anticipada</div>
+                <div class="arrival-img">
+                    <img src="assets/images/nuevo/foto1.jpg" alt="Floral 2">
+                </div>
+                <div class="arrival-info">
+                    <div class="arrival-name">Deco d'Or Grand Wreath</div>
+                    <div class="arrival-price">$350</div>
+                </div>
+            </div>
+            <div class="arrival-card">
+                <div class="arrival-badge green" data-es="Reserva Anticipada" data-en="Pre-Order Now">Reserva Anticipada</div>
+                <div class="arrival-img">
+                    <img src="assets/images/nuevo/regalo1.JPG" alt="Floral 3">
+                </div>
+                <div class="arrival-info">
+                    <div class="arrival-name">Deco d'Or Garland</div>
+                    <div class="arrival-price">$299</div>
+                </div>
+            </div>
+            <div class="arrival-card">
+                <div class="arrival-badge" data-es="Nuevo" data-en="New Arrival">Nuevo</div>
+                <div class="arrival-img">
+                    <img src="assets/images/nuevo/regalo2.jpeg" alt="Floral 4">
+                </div>
+                <div class="arrival-info">
+                    <div class="arrival-name">Classic Eternity Box</div>
+                    <div class="arrival-price">$350</div>
+                </div>
+            </div>
+            <div class="arrival-card">
+                <div class="arrival-badge" data-es="Nuevo" data-en="New Arrival">Nuevo</div>
+                <div class="arrival-img">
+                    <img src="assets/images/nuevo/Image.jpeg" alt="Floral 5">
+                </div>
+                <div class="arrival-info">
+                    <div class="arrival-name">Golden Rose Arrangement</div>
+                    <div class="arrival-price">$450</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- APARTADO EDITORIAL DE LUJO -->
+    <section class="editorial-section" id="editorial-inicio">
+        <div class="editorial-row">
+            <div class="editorial-img-box">
+                <img src="assets/images/nuevo/foto1.jpg" alt="Seasonal Eternity Blooms">
+            </div>
+            <div class="editorial-content-box">
+                <h3 class="editorial-title" data-es="Seasonal Eternity Blooms" data-en="Seasonal Eternity Blooms">Seasonal Eternity Blooms</h3>
+                <p class="editorial-desc" data-es="Presentando la primera anémona Eternity® preservada, nuestra innovación floral más reciente de Japón." data-en="Introducing the first preserved Eternity® anemone, our newest floral innovation from Japan.">Presentando la primera anémona Eternity® preservada, nuestra innovación floral más reciente de Japón.</p>
+                <button class="editorial-btn" data-es="Comprar la Colección" data-en="Shop the Collection">Comprar la Colección</button>
+                
+                <div class="editorial-sub-img">
+                    <img src="assets/images/nuevo/adorno1.JPG" alt="Detalle Floral">
+                </div>
+            </div>
+        </div>
+
+        <div class="editorial-row reverse">
+            <div class="editorial-img-box">
+                <img src="assets/images/nuevo/regalo1.JPG" alt="Festive Decor">
+            </div>
+            <div class="editorial-content-box">
+                <h3 class="editorial-title" data-es="Decoración Festiva" data-en="Festive Decor">Decoración Festiva</h3>
+                <p class="editorial-desc" data-es="Rosas Eternity, adornos y nuestras creaciones más extravagantes, con el glamour de la era Art Deco." data-en="Eternity roses, ornaments and our most extravagant creations, in the glamour of the Art Deco era.">Rosas Eternity, adornos y nuestras creaciones más extravagantes, con el glamour de la era Art Deco.</p>
+                <button class="editorial-btn" data-es="Comprar Decoración Navideña" data-en="Shop Holiday Décor">Comprar Decoración Navideña</button>
+                
+                <div class="editorial-sub-img">
+                    <img src="assets/images/nuevo/Image.jpeg" alt="Detalle Festivo">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- EXPLORE OUR GARDENS (Efecto 3D) -->
+    <section class="gardens-section">
+        <div class="gardens-header">
+            <h2 class="gardens-title" data-es="Explora Nuestros Jardines" data-en="Explore Our Gardens">Explora Nuestros Jardines</h2>
+        </div>
+        <div class="gardens-grid">
+            <div class="garden-card">
+                <div class="garden-img-container">
+                    <img src="assets/images/nuevo/Image.jpeg" alt="Roses">
+                </div>
+                <div class="garden-overlay"></div>
+                <span class="garden-label" data-es="Rosas" data-en="Roses">Rosas</span>
+            </div>
+            <div class="garden-card">
+                <div class="garden-img-container">
+                    <img src="assets/images/nuevo/adorno1.JPG" alt="Mixed Florals">
+                </div>
+                <div class="garden-overlay"></div>
+                <span class="garden-label" data-es="Florales Mixtos" data-en="Mixed Florals">Florales Mixtos</span>
+            </div>
+            <div class="garden-card">
+                <div class="garden-img-container">
+                    <img src="assets/images/nuevo/regalo1.JPG" alt="Hydrangeas">
+                </div>
+                <div class="garden-overlay"></div>
+                <span class="garden-label" data-es="Hortensias" data-en="Hydrangeas">Hortensias</span>
+            </div>
+            <div class="garden-card">
+                <div class="garden-img-container">
+                    <img src="assets/images/nuevo/foto1.jpg" alt="Peonies">
+                </div>
+                <div class="garden-overlay"></div>
+                <span class="garden-label" data-es="Peonías" data-en="Peonies">Peonías</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- LOVED BY ICONS -->
+    <section class="loved-by-icons-section">
+        <div class="icons-header">
+            <h2 class="icons-title" data-es="Amado por Iconos" data-en="Loved by Icons">Amado por Iconos</h2>
+            <div class="icons-arrows">
+                <button class="arrow-btn" onclick="desplazarIcons('izquierda')">&#8592;</button>
+                <button class="arrow-btn" onclick="desplazarIcons('derecha')">&#8594;</button>
+            </div>
+        </div>
+
+        <div class="icons-slider-wrapper" id="icons-slider">
+            <div class="icon-card">
+                <div class="icon-avatar">
+                    <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=400&q=80" alt="Gigi Hadid">
+                </div>
+                <h3 class="icon-name">Gigi Hadid</h3>
+                <span class="icon-handle">@gigihadid</span>
+                <p class="icon-quote" data-es='"¡Gracias por tu amabilidad y generosidad con tus hermosas flores! ¡Fan para siempre!"' data-en='"Thank you for your kindness and generosity with your amazing flowers! Forever fan!"'>"¡Gracias por tu amabilidad y generosidad con tus hermosas flores! ¡Fan para siempre!"</p>
+                <div class="icon-stars">★★★★★</div>
+                <div class="icon-product-box">
+                    <img src="assets/images/nuevo/foto1.jpg" alt="Gia Marble Vase">
+                    <div class="icon-prod-info">
+                        <span class="icon-prod-title">Gia Marble Vase</span>
+                        <span class="icon-prod-price">$699</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="icon-card">
+                <div class="icon-avatar">
+                    <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=400&q=80" alt="Ashley Benson">
+                </div>
+                <h3 class="icon-name">Ashley Benson</h3>
+                <span class="icon-handle">@ashleybenson</span>
+                <p class="icon-quote" data-es='"¡Simplemente amo, amo y amo tus flores!"' data-en='"I just love love love and love your flowers!"'>"¡Simplemente amo, amo y amo tus flores!"</p>
+                <div class="icon-stars">★★★★★</div>
+                <div class="icon-product-box">
+                    <img src="assets/images/nuevo/regalo1.JPG" alt="Small Square">
+                    <div class="icon-prod-info">
+                        <span class="icon-prod-title">Small Square</span>
+                        <span class="icon-prod-price">$299</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="icon-card">
+                <div class="icon-avatar">
+                    <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=400&q=80" alt="Dixie D'Amelio">
+                </div>
+                <h3 class="icon-name">Dixie D'Amelio</h3>
+                <span class="icon-handle">@dixiedamelio</span>
+                <p class="icon-quote" data-es='"Siempre hermosas."' data-en='"Always gorgeous."'>"Siempre hermosas."</p>
+                <div class="icon-stars">★★★★★</div>
+                <div class="icon-product-box">
+                    <img src="assets/images/nuevo/regalo2.jpeg" alt="Large Square">
+                    <div class="icon-prod-info">
+                        <span class="icon-prod-title">Large Square</span>
+                        <span class="icon-prod-price">$399</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- WHO WE ARE -->
+    <section class="who-we-are-section">
+        <div class="who-we-are-overlay"></div>
+        <div class="who-we-are-content">
+            <span class="who-we-are-tag" data-es="QUIÉNES SOMOS" data-en="WHO WE ARE">WHO WE ARE</span>
+            <h2 class="who-we-are-line" data-es="PIONEROS DE LAS FLORES ETERNAS" data-en="PIONEERS OF ETERNITY FLOWERS">PIONEERS OF ETERNITY FLOWERS</h2>
+            <h2 class="who-we-are-line" data-es="LUJO QUE DURA TODO EL AÑO" data-en="LUXURY THAT LASTS ALL YEAR">LUXURY THAT LASTS ALL YEAR</h2>
+            <h2 class="who-we-are-line" data-es="ARTESANÍA EN CADA PÉTALO" data-en="CRAFTSMANSHIP IN EVERY PETAL">CRAFTSMANSHIP IN EVERY PETAL</h2>
+            <h2 class="who-we-are-line main" data-es="HECHO EXCLUSIVAMENTE POR ENCARGO" data-en="EXCLUSIVELY MADE TO ORDER">EXCLUSIVELY MADE TO ORDER</h2>
+            <button class="who-we-are-btn" data-es="SABER MÁS" data-en="LEARN MORE">LEARN MORE</button>
+        </div>
+    </section>
+
+    <!-- 3 COLUMNAS -->
+    <section class="renaissance-grid-section">
+        <a href="pages/flores.html" class="ren-card">
+            <div class="ren-img-box">
+                <img src="assets/images/nuevo/Image.jpeg" alt="Eternity Flowers">
+            </div>
+            <div class="ren-overlay"></div>
+            <h3 class="ren-label" data-es="FLORES ETERNAS" data-en="ETERNITY FLOWERS">FLORES ETERNAS</h3>
+        </a>
+        <a href="pages/explorar.html" class="ren-card">
+            <div class="ren-img-box">
+                <img src="assets/images/nuevo/adorno1.JPG" alt="Our Story">
+            </div>
+            <div class="ren-overlay"></div>
+            <h3 class="ren-label" data-es="NUESTRA HISTORIA" data-en="OUR STORY">NUESTRA HISTORIA</h3>
+        </a>
+        <a href="pages/contacto.html" class="ren-card">
+            <div class="ren-img-box">
+                <img src="assets/images/nuevo/regalo1.JPG" alt="FAQs">
+            </div>
+            <div class="ren-overlay"></div>
+            <h3 class="ren-label" data-es="PREGUNTAS FRECUENTES" data-en="FAQS">PREGUNTAS FRECUENTES</h3>
+        </a>
+    </section>
+
+    <!-- PIE DE PÁGINA DE LUJO -->
+    <footer class="site-footer-lux">
+        <div class="footer-top-logo">
+            <img src="assets/images/editorial/logopagina.png" alt="Logo Footer" class="footer-logo-img">
+        </div>
+        <div class="footer-stay-in-touch">
+            <h3 data-es="Mantente en contacto" data-en="Stay in Touch">Stay in Touch</h3>
+            <div class="footer-input-group">
+                <input type="email" placeholder="SIGN UP FOR EMAILS" data-es="REGÍSTRATE PARA CORREOS" data-en="SIGN UP FOR EMAILS">
+                <button>→</button>
+            </div>
+        </div>
+
+        <div class="footer-links-grid">
+            <div class="footer-col">
+                <h4 data-es="Información" data-en="Information">Information</h4>
+                <ul>
+                    <li><a href="#" data-es="¿Qué son las flores Eternity?" data-en="What Are Eternity Flowers?">What Are Eternity Flowers?</a></li>
+                    <li><a href="#" data-es="Blog" data-en="Blog">Blog</a></li>
+                    <li><a href="#" data-es="Prensa" data-en="Press">Press</a></li>
+                    <li><a href="#" data-es="Regalos corporativos y al por mayor" data-en="Corporate & Bulk Gifting">Corporate & Bulk Gifting</a></li>
+                    <li><a href="#" data-es="Carreras" data-en="Careers">Careers</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4 data-es="Ayuda" data-en="Help">Help</h4>
+                <ul>
+                    <li><a href="#" data-es="Envíos y devoluciones" data-en="Shipping and Returns">Shipping and Returns</a></li>
+                    <li><a href="#" data-es="Preguntas frecuentes" data-en="FAQs">FAQs</a></li>
+                    <li><a href="pages/contacto.html" data-es="Contáctenos" data-en="Contact Us">Contact Us</a></li>
+                    <li><a href="#" data-es="Política de privacidad" data-en="Privacy Policy">Privacy Policy</a></li>
+                    <li><a href="#" data-es="Preferencias de cookies" data-en="Cookie Preferences">Cookie Preferences</a></li>
+                    <li><a href="#" data-es="No vender mi información" data-en="Do Not Sell My Info">Do Not Sell My Info</a></li>
+                    <li><a href="#" data-es="Eliminar mis datos" data-en="Delete My Data">Delete My Data</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4 data-es="Social" data-en="Social">Social</h4>
+                <ul>
+                    <li><a href="https://www.instagram.com/jenyflowers.official?mdxt=MW8zcWYwcThhcjJqYQ%3D%3D&utm_source=qr" target="_blank">Instagram</a></li>
+                    <li><a href="https://www.tiktok.com/@jenyflowers01?is_from_webapp=1&sender_device=pc" target="_blank">TikTok</a></li>
+                    <li><a href="https://www.facebook.com/profile.php?id=61596152545684&mibextid=wwXIfr" target="_blank">Facebook</a></li>
+                    <li><a href="#">Pinterest</a></li>
+                    <li><a href="#">Youtube</a></li>
+                    <li><a href="#">X</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom-bar">
+            <p>&copy; 2026 JENY FLOWERS. <span data-es="Todos los derechos reservados." data-en="All rights reserved.">All rights reserved.</span></p>
+            <div class="footer-legal">
+                <a href="#" data-es="Términos y condiciones" data-en="Terms & Conditions">Terms & Conditions</a>
+                <a href="#" data-es="Privacidad" data-en="Privacy">Privacy</a>
+                <a href="#" data-es="Declaración de accesibilidad" data-en="Accessibility Statement">Accessibility Statement</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Widget de Chat Flotante -->
+    <div id="chat-widget-container">
+        <button id="chat-toggle-btn" onclick="toggleChat()">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 2C6.48 2 2 6.03 2 11c0 2.87 1.44 5.41 3.69 7.04V21l3.52-1.93c.89.24 1.83.38 2.79.38 5.52 0 10-4.03 10-9s-4.48-9-10-9zm-1.5 12.5h-3v-3h3v3zm4 0h-3v-3h3v3zm4 0h-3v-3h3v3z" />
+                <path d="M7 9h10v2H7zm0-3h10v2H7z"/>
+            </svg>
+            <span class="chat-badge">1</span>
+        </button>
+        <div id="chat-box" class="chat-box-hidden">
+            <div class="chat-header">
+                <span data-es="Asistente Jeny Flowers" data-en="Jeny Flowers Assistant">Jeny Flowers Assistant</span>
+                <button onclick="toggleChat()" style="background:none; border:none; color:white; cursor:pointer; font-size:18px;">&times;</button>
+            </div>
+            <div id="chat-messages" class="chat-messages">
+                <div class="bot-msg" data-es="¡Hola! Soy tu asistente virtual de Jeny Flowers 🌸. ¿En qué puedo ayudarte hoy?" data-en="Hello! I am your Jeny Flowers virtual assistant 🌸. How can I help you today?">
+                    ¡Hola! Soy tu asistente virtual de Jeny Flowers 🌸. ¿En qué puedo ayudarte hoy?
+                </div>
+            </div>
+            <div class="chat-input-area">
+                <input type="text" id="chat-input" placeholder="Escribe tu mensaje..." data-es="Escribe tu mensaje..." data-en="Type your message..." onkeypress="manejarEnter(event)">
+                <button onclick="enviarMensajeBot()" data-es="Enviar" data-en="Send">Enviar</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

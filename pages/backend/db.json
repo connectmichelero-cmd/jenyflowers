@@ -1,0 +1,26 @@
+{
+  "store": {
+    "name": "JENY FLOWERS",
+    "currency": "USD"
+  },
+  "products": [
+    {
+      "id": "prod_1",
+      "name": "Caja Redonda Clásica de Rosas Eternas",
+      "price": 12000,
+      "image": "https://images.unsplash.com/photo-1561181286-d3fee7d55364?auto=format&fit=crop&w=600&q=80"
+    },
+    {
+      "id": "prod_2",
+      "name": "Jarrón de Porcelana Tazza",
+      "price": 25000,
+      "image": "https://images.unsplash.com/photo-1526047932273-341f2a7631f9?auto=format&fit=crop&w=600&q=80"
+    },
+    {
+      "id": "prod_3",
+      "name": "Caja Cuadrada Edición Especial",
+      "price": 18000,
+      "image": "https://images.unsplash.com/photo-1508746814838-4e551a374c49?auto=format&fit=crop&w=600&q=80"
+    }
+  ]
+}
